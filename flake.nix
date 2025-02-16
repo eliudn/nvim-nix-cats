@@ -80,6 +80,7 @@
       # this includes LSPs
       lspsAndRuntimeDeps = {
         general = with pkgs; [
+          lua-language-server
         ];
       };
 
@@ -92,8 +93,13 @@
       # not loaded automatically at startup.
       # use with packadd and an autocommand in config to achieve lazy loading
       optionalPlugins = {
-        gitPlugins = with pkgs.neovimPlugins; [ ];
-        general = with pkgs.vimPlugins; [ ];
+        # gitPlugins = with pkgs.neovimPlugins; [ ];
+        general = with pkgs.vimPlugins; [ 
+          vim-sleuth
+          nvim-lspconfig
+          fidget-nvim
+          lazydev-nvim
+        ];
       };
 
       # shared libraries to be added to LD_LIBRARY_PATH
