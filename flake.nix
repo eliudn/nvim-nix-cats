@@ -99,6 +99,11 @@
           nvim-lspconfig
           fidget-nvim
           lazydev-nvim
+          nvim-treesitter.withAllGrammars # para installe todo los lenguaje
+        ];
+
+        file-manager = with pkgs.vimPlugins; [
+          oil-nvim
         ];
       };
 
@@ -171,6 +176,7 @@
           general = true;
           gitPlugins = true;
           customPlugins = true;
+          file-manager = true;
           test = true;
           example = {
             youCan = "add more than just booleans";
