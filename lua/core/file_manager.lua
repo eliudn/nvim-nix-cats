@@ -5,4 +5,5 @@ return {
   opts = {},
   enabled = require("nixCatsUtils").enableForCategory("file-manager"),
   cmd = { "Oil" },
+  dependencies = {{"echasnovski/mini.icons",opts = {}}},
 }

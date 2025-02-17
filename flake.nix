@@ -81,6 +81,7 @@
       lspsAndRuntimeDeps = {
         general = with pkgs; [
           lua-language-server
+          fzf
         ];
       };
 
@@ -104,6 +105,11 @@
 
         file-manager = with pkgs.vimPlugins; [
           oil-nvim
+          mini-icons
+        ];
+
+        fuzzyFinder  = with pkgs.vimPlugins; [
+          fzf-lua
         ];
       };
 
@@ -177,6 +183,7 @@
           gitPlugins = true;
           customPlugins = true;
           file-manager = true;
+          fuzzyFinder = true;
           test = true;
           example = {
             youCan = "add more than just booleans";
