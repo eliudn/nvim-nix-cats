@@ -94,6 +94,8 @@
               gopls
               gitea
               lazygit
+              ripgrep
+              fd
             ];
           };
 
