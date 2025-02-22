@@ -9,6 +9,7 @@ return {
     vim.keymap.set({"n"}, "<leader>pp", require('fzf-lua').git_files )
     vim.keymap.set({"n"}, "<leader>pe", require('fzf-lua').buffers )
     vim.keymap.set({"n"}, "<leader>pl", require('fzf-lua').live_grep )
-    vim.keymap.set({"n"}, "<leader>ph", require('fzf-lua').helptags )
+    -- vim.keymap.set({"n"}, "<leader>ph", require('fzf-lua').helptags )
+
   end
 }
