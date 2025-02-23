@@ -14,6 +14,10 @@ return {
       "markdown",
       "vim",
       "vimdoc",
+      "php",
+      "blade",
+      "css",
+      "javascript",
     }),
     auto_install = require("nixCatsUtils").lazyAdd(true, false),
 

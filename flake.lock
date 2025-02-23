@@ -31,6 +31,22 @@
         "type": "github"
       }
     },
+    "plugins-laravel.nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1740251072,
+        "narHash": "sha256-tK4W60kqR6HfA8fVQJQd3SHkB9jyDNaeTn4eNVbmRSc=",
+        "owner": "adalessa",
+        "repo": "laravel.nvim",
+        "rev": "2aef93890ca7853ddf550e11b4a60741a2eab1a1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "adalessa",
+        "repo": "laravel.nvim",
+        "type": "github"
+      }
+    },
     "plugins-snacks.nvim": {
       "flake": false,
       "locked": {
@@ -51,6 +67,7 @@
       "inputs": {
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
+        "plugins-laravel.nvim": "plugins-laravel.nvim",
         "plugins-snacks.nvim": "plugins-snacks.nvim"
       }
     }

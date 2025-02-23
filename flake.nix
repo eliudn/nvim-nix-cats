@@ -9,6 +9,12 @@
       url = "github:folke/snacks.nvim";
       flake = false;
     };
+
+    "plugins-laravel.nvim" = {
+      url = "github:adalessa/laravel.nvim";
+      flake = false;
+    };
+
   };
 
   # see :help nixCats.flake.outputs
@@ -51,7 +57,8 @@
           # `plugins-<pluginName>`
           # Once we add this overlay to our nixpkgs, we are able to
           # use `pkgs.neovimPlugins`, which is a set of our plugins.
-          (utils.standardPluginOverlay inputs)
+          # (utils.standardPluginOverlay inputs)
+          (utils.sanitizedPluginOverlay inputs)
           # add any other flake overlays here.
 
           # when other people mess up their overlays by wrapping them with system,
@@ -96,6 +103,9 @@
               lazygit
               ripgrep
               fd
+              phpactor
+              php83
+              php83Packages.composer
             ];
           };
 
@@ -111,6 +121,8 @@
               nvim-treesitter.withAllGrammars # para installe todo los lenguaje
               blink-cmp
               snacks-nvim
+              lualine-nvim
+              vim-surround
               
               # pkgs.neovimPlugins.snacks-nvim
             ];
@@ -122,6 +134,14 @@
 
             fuzzyFinder = with pkgs.vimPlugins; [
               fzf-lua
+            ];
+
+            laravel = [
+              pkgs.neovimPlugins.laravel-nvim
+              pkgs.vimPlugins.plenary-nvim
+              pkgs.vimPlugins.nui-nvim
+              pkgs.vimPlugins.vim-dotenv
+              pkgs.vimPlugins.promise-async
             ];
           };
 
@@ -205,6 +225,7 @@
               customPlugins = true;
               file-manager = true;
               fuzzyFinder = true;
+              laravel = true;
               test = true;
               example = {
                 youCan = "add more than just booleans";
