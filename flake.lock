@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "blade-treesitter": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733746012,
+        "narHash": "sha256-N3QUylMqhX5aZGyIx1zfMe4xZRAwwE7e4MyhOiawCXw=",
+        "owner": "EmranMR",
+        "repo": "tree-sitter-blade",
+        "rev": "47baa7ba1f9d5f436c7a72b052d2dac2166abf92",
+        "type": "github"
+      },
+      "original": {
+        "owner": "EmranMR",
+        "repo": "tree-sitter-blade",
+        "type": "github"
+      }
+    },
     "nixCats": {
       "locked": {
         "lastModified": 1738991100,
@@ -65,6 +81,7 @@
     },
     "root": {
       "inputs": {
+        "blade-treesitter": "blade-treesitter",
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
         "plugins-laravel.nvim": "plugins-laravel.nvim",

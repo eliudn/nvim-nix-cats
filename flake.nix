@@ -10,6 +10,11 @@
       flake = false;
     };
 
+    blade-treesitter = {
+      url ="github:EmranMR/tree-sitter-blade";
+      flake = false;
+    };
+
     "plugins-laravel.nvim" = {
       url = "github:adalessa/laravel.nvim";
       flake = false;
@@ -93,6 +98,11 @@
           # at RUN TIME for plugins. Will be available to PATH within neovim terminal
           # this includes LSPsjj
           lspsAndRuntimeDeps = {
+            laravel = with pkgs; [
+              phpactor
+              php83
+              php83Packages.composer
+            ];
             general = with pkgs; [
               lua-language-server
               fzf
@@ -103,9 +113,6 @@
               lazygit
               ripgrep
               fd
-              phpactor
-              php83
-              php83Packages.composer
             ];
           };
 
@@ -142,6 +149,14 @@
               pkgs.vimPlugins.nui-nvim
               pkgs.vimPlugins.vim-dotenv
               pkgs.vimPlugins.promise-async
+
+              (pkgs.vimPlugins.nvim-treesitter.grammarToPlugin(
+                pkgs.tree-sitter.buildGrammar {
+                  language = "blade";
+                  version = "0.11.0";
+                  src = inputs.blade-treesitter;
+                }
+              ))
             ];
           };
 

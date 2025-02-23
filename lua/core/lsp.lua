@@ -96,23 +96,25 @@ return {
       },
     }
 
-    servers.phpactor = {
-      filetypes = {"php", "blade"},
-      init_options = {
-        ["language_server_worse_reflection.inlay_hints.enable"]=true,
-        ["language_server_worse_reflection.inlay_hints.types"]=false,
-        ["language_server_worse_reflection.inlay_hints.params"]=true,
-        ["code_transform.import_globals"]= true,
-      },
-      handlers = {
-        ["textDocument/inlayHint"] = function (err, result, ...)
-          for _, res in ipairs(result) do
-            res.label = res.label .. ": "
-          end
-          vim.lsp.handlers["textDocument/inlayHint"](err, result, ...)
-        end,
+    if require('nixCatsUtils').enableForCategory("laravel") then
+      servers.phpactor = {
+        filetypes = {"php", "blade"},
+        init_options = {
+          ["language_server_worse_reflection.inlay_hints.enable"]=true,
+          ["language_server_worse_reflection.inlay_hints.types"]=false,
+          ["language_server_worse_reflection.inlay_hints.params"]=true,
+          ["code_transform.import_globals"]= true,
+        },
+        handlers = {
+          ["textDocument/inlayHint"] = function (err, result, ...)
+            for _, res in ipairs(result) do
+              res.label = res.label .. ": "
+            end
+            vim.lsp.handlers["textDocument/inlayHint"](err, result, ...)
+          end,
+        }
       }
-    }
+    end
 
     if require("nixCatsUtils").isNixCats then
       for server_name, _ in pairs(servers) do
