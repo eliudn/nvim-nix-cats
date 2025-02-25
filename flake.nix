@@ -20,6 +20,11 @@
       flake = false;
     };
 
+    "plugins-vague.nvim" = {
+      url = "github:vague2k/vague.nvim";
+      flake = false;
+    };
+
   };
 
   # see :help nixCats.flake.outputs
@@ -130,7 +135,8 @@
               snacks-nvim
               lualine-nvim
               vim-surround
-              
+              pkgs.neovimPlugins.vague-nvim
+              direnv-vim
               # pkgs.neovimPlugins.snacks-nvim
             ];
 
