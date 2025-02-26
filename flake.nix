@@ -25,6 +25,13 @@
       flake = false;
     };
 
+    blink = {
+      url = "github:Saghen/blink.cmp";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
   };
 
   # see :help nixCats.flake.outputs
@@ -104,7 +111,8 @@
           # this includes LSPsjj
           lspsAndRuntimeDeps = {
             laravel = with pkgs; [
-              phpactor
+              # phpactor
+              intelephense
               php83
               php83Packages.composer
             ];
@@ -131,7 +139,9 @@
               fidget-nvim
               lazydev-nvim
               nvim-treesitter.withAllGrammars # para installe todo los lenguaje
-              blink-cmp
+              # blink-cmp
+              (inputs.blink.packages.${pkgs.system}.blink-cmp.overrideAttrs {pname = "blink.cmp";})
+              friendly-snippets
               snacks-nvim
               lualine-nvim
               vim-surround

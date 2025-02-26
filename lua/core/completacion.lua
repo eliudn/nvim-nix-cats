@@ -1,5 +1,6 @@
 return {
  'saghen/blink.cmp',
+  dependencies = 'rafamadriz/friendly-snippets',
   version = "*",
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
@@ -13,5 +14,11 @@ return {
       default = { 'lsp', 'path', 'snippets', 'buffer' }
     },
   },
-  opts_extend = { "sources.default" }
+  opts_extend = { "sources.default" },
+  config = function(_, opts)
+        if require("nixCatsUtils").isNixCats then
+            opts.fuzzy = { prebuilt_binaries = { download = false } }
+        end
+        require('blink-cmp').setup(opts)
+    end,
 }

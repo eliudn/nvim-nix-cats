@@ -15,6 +15,7 @@ return {
   },
   event = {"VeryLazy"},
   opts = {
+    lsp_server = "intelephense",
     features = {
       pickers = {
         provider = "fzf-lua"
