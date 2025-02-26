@@ -139,14 +139,18 @@
               fidget-nvim
               lazydev-nvim
               nvim-treesitter.withAllGrammars # para installe todo los lenguaje
+              nvim-treesitter-textobjects
               # blink-cmp
               (inputs.blink.packages.${pkgs.system}.blink-cmp.overrideAttrs {pname = "blink.cmp";})
+              blink-compat
+              mini-icons
               friendly-snippets
               snacks-nvim
               lualine-nvim
               vim-surround
               pkgs.neovimPlugins.vague-nvim
               direnv-vim
+              luasnip
               # pkgs.neovimPlugins.snacks-nvim
             ];
 
@@ -157,6 +161,7 @@
 
             fuzzyFinder = with pkgs.vimPlugins; [
               fzf-lua
+              mini-icons
             ];
 
             laravel = with pkgs.vimPlugins;[
