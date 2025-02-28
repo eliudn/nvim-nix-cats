@@ -128,6 +128,7 @@
               vim-dadbod-ui
               vim-dadbod-completion
               conform-nvim
+              auto-pairs
             ];
 
             file-manager = with pkgs.vimPlugins; [
