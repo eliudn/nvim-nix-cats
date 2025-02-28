@@ -46,34 +46,12 @@
       inherit (nixCats) utils;
       luaPath = "${./.}";
       forEachSystem = utils.eachSystem nixpkgs.lib.platforms.all;
-      # the following extra_pkg_config contains any values
-      # which you want to pass to the config set of nixpkgs
-      # import nixpkgs { config = extra_pkg_config; inherit system; }
-      # will not apply to module imports
-      # as that will have your system values
+      
       extra_pkg_config = {
          allowUnfree = true;
       };
-      # management of the system variable is one of the harder parts of using flakes.
-
-      # so I have done it here in an interesting way to keep it out of the way.
-      # It gets resolved within the builder itself, and then passed to your
-      # categoryDefinitions and packageDefinitions.
-
-      # this allows you to use ${pkgs.system} whenever you want in those sections
-      # without fear.
-
-      # sometimes our overlays require a ${system} to access the overlay.
-      # Your dependencyOverlays can either be lists
-      # in a set of ${system}, or simply a list.
-      # the nixCats builder function will accept either.
-      # see :help nixCats.flake.outputs.overlays
       dependencyOverlays = # (import ./overlays inputs) ++
         [
-          # This overlay grabs all the inputs named in the format
-          # `plugins-<pluginName>`
-          # Once we add this overlay to our nixpkgs, we are able to
-          # use `pkgs.neovimPlugins`, which is a set of our plugins.
           # (utils.standardPluginOverlay inputs)
           (utils.sanitizedPluginOverlay inputs)
           # add any other flake overlays here.
@@ -100,15 +78,6 @@
           ...
         }@packageDef:
         {
-          # to define and use a new category, simply add a new list to a set here,
-          # and later, you will include categoryname = true; in the set you
-          # provide when you build the package using this builder function.
-          # see :help nixCats.flake.outputs.packageDefinitions for info on that section.
-
-          # lspsAndRuntimeDeps:
-          # this section is for dependencies that should be available
-          # at RUN TIME for plugins. Will be available to PATH within neovim terminal
-          # this includes LSPsjj
           lspsAndRuntimeDeps = {
             laravel = with pkgs; [
               # phpactor
@@ -158,6 +127,7 @@
               vim-dadbod
               vim-dadbod-ui
               vim-dadbod-completion
+              conform-nvim
             ];
 
             file-manager = with pkgs.vimPlugins; [
