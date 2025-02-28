@@ -151,7 +151,13 @@
               pkgs.neovimPlugins.vague-nvim
               direnv-vim
               luasnip
-              # pkgs.neovimPlugins.snacks-nvim
+              neotest
+              nvim-nio
+              plenary-nvim
+              FixCursorHold-nvim
+              vim-dadbod
+              vim-dadbod-ui
+              vim-dadbod-completion
             ];
 
             file-manager = with pkgs.vimPlugins; [

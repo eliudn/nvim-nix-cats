@@ -40,16 +40,31 @@ return {
       },
       sources = {
         default = function ()
+
           local sources = { 'lsp', 'path', 'snippets', 'buffer' }
-          if vim.bo.filetype == 'php' and vim.fn.filereadable('artisan') ==1 then
+          if require('nixCatsUtils').enableForCategory("laravel") and
+            vim.bo.filetype == 'php' and vim.fn.filereadable('artisan') == 1 then
+
             table.insert(sources,'laravel')
+
           end
+
+          if vim.tbl_contains({'sql','mysql','plsql'}, vim.bo.filetype) then
+
+            return {'dadbod','snippets'}
+
+          end
+
           return sources
         end,
         providers = {
           laravel = {
             name = "laravel",
             module = "blink.compat.source",
+          },
+          dadbod = {
+            name = "Dadbod", 
+            module = "vim_dadbod_completion.blink",
           }
         }
       },
