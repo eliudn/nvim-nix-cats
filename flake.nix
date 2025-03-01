@@ -40,9 +40,20 @@
       url = "github:refractalize/oil-git-status.nvim";
       flake = false;
     };
+    "plugins-evangelion.nvim" = {
+      url = "github:xero/evangelion.nvim";
+      flake = false;
+    };
   };
   # see :help nixCats.flake.outputs
-  outputs = { self, nixpkgs, nixCats, ... }@inputs: let
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixCats,
+      ...
+    }@inputs:
+    let
       inherit (nixCats) utils;
       luaPath = "${./.}";
       forEachSystem = utils.eachSystem nixpkgs.lib.platforms.all;
@@ -67,7 +78,16 @@
       # see :help nixCats.flake.outputs.categories
       # and
       # :help nixCats.flake.outputs.categoryDefinitions.scheme
-      categoryDefinitions = { pkgs, settings, categories, extra, name, mkNvimPlugin, ... }@packageDef:
+      categoryDefinitions =
+        {
+          pkgs,
+          settings,
+          categories,
+          extra,
+          name,
+          mkNvimPlugin,
+          ...
+        }@packageDef:
         {
           lspsAndRuntimeDeps = {
             laravel = with pkgs; [
@@ -133,6 +153,7 @@
               auto-pairs
               colorizer
               gitsigns-nvim
+              pkgs.neovimPlugins.evangelion-nvim
             ];
 
             file-manager = with pkgs.vimPlugins; [
