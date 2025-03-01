@@ -142,6 +142,8 @@
               vim-dadbod-completion
               conform-nvim
               auto-pairs
+              colorizer
+              gitsigns-nvim
             ];
 
             file-manager = with pkgs.vimPlugins; [

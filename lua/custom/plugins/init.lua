@@ -11,4 +11,9 @@ return {
       vim.cmd.colorscheme('vague')
     end,
   },
+  {
+    "norcalli/nvim-colorizer.lua",
+    opts = {},
+    config = true,
+  }
 }
