@@ -154,6 +154,22 @@
         "type": "github"
       }
     },
+    "plugins-oil-git-status.nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1736777807,
+        "narHash": "sha256-pz/+RF5woO4V5pNEp6gEsTaRNNqCQDrI6jFrNdtDmmY=",
+        "owner": "refractalize",
+        "repo": "oil-git-status.nvim",
+        "rev": "293021c42f9d725981616c26c05964c7e5a88a08",
+        "type": "github"
+      },
+      "original": {
+        "owner": "refractalize",
+        "repo": "oil-git-status.nvim",
+        "type": "github"
+      }
+    },
     "plugins-snacks.nvim": {
       "flake": false,
       "locked": {
@@ -194,6 +210,7 @@
         "nixpkgs": "nixpkgs",
         "phpactor-laravel": "phpactor-laravel",
         "plugins-laravel.nvim": "plugins-laravel.nvim",
+        "plugins-oil-git-status.nvim": "plugins-oil-git-status.nvim",
         "plugins-snacks.nvim": "plugins-snacks.nvim",
         "plugins-vague.nvim": "plugins-vague.nvim"
       }

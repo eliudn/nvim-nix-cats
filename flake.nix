@@ -36,6 +36,10 @@
       url = "github:adalessa/phpactor/feature/laravel-extension";
       flake = false;
     };
+    "plugins-oil-git-status.nvim" = {
+      url = "github:refractalize/oil-git-status.nvim";
+      flake = false;
+    };
   };
   # see :help nixCats.flake.outputs
   outputs = { self, nixpkgs, nixCats, ... }@inputs: let
@@ -133,6 +137,7 @@
 
             file-manager = with pkgs.vimPlugins; [
               oil-nvim
+              pkgs.neovimPlugins.oil-git-status-nvim
               mini-icons
             ];
 
