@@ -26,10 +26,15 @@
     };
 
     blink = {
+
       url = "github:Saghen/blink.cmp";
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };
+    };
+    phpactor-laravel = {
+      url = "github:adalessa/phpactor/feature/laravel-extension";
+      flake = false;
     };
 
   };
@@ -46,7 +51,7 @@
       inherit (nixCats) utils;
       luaPath = "${./.}";
       forEachSystem = utils.eachSystem nixpkgs.lib.platforms.all;
-      
+
       extra_pkg_config = {
          allowUnfree = true;
       };
@@ -81,9 +86,17 @@
           lspsAndRuntimeDeps = {
             laravel = with pkgs; [
               # phpactor
-              intelephense
+              # intelephense
+              (pkgs.php.buildComposerProject (finalAttrs: {
+                pname = "phpactor";
+                version = "master";
+                src = inputs.phpactor-laravel;
+                vendorHash = "sha256-9re+qnjcu9kqbwlxFnTtkL+wZHs+OxEax6Jl5T3c5s0=";
+                buildInputs = [ pkgs.php83];
+              }))
               php83
               php83Packages.composer
+              blade-formatter
             ];
             general = with pkgs; [
               lua-language-server

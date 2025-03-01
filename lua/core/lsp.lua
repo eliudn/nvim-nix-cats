@@ -99,24 +99,24 @@ return {
     }
 
     if require('nixCatsUtils').enableForCategory("laravel") then
-      -- servers.phpactor = {
-      --   filetypes = {"php", "blade"},
-      --   init_options = {
-      --     ["language_server_worse_reflection.inlay_hints.enable"]=true,
-      --     ["language_server_worse_reflection.inlay_hints.types"]=false,
-      --     ["language_server_worse_reflection.inlay_hints.params"]=true,
-      --     ["code_transform.import_globals"]= true,
-      --   },
-      --   handlers = {
-      --     ["textDocument/inlayHint"] = function (err, result, ...)
-      --       for _, res in ipairs(result) do
-      --         res.label = res.label .. ": "
-      --       end
-      --       vim.lsp.handlers["textDocument/inlayHint"](err, result, ...)
-      --     end,
-      --   }
-      -- }
-      servers.intelephense = {};
+      servers.phpactor = {
+        filetypes = {"php", "blade"},
+        init_options = {
+          ["language_server_worse_reflection.inlay_hints.enable"]=true,
+          ["language_server_worse_reflection.inlay_hints.types"]=false,
+          ["language_server_worse_reflection.inlay_hints.params"]=true,
+          ["code_transform.import_globals"]= true,
+        },
+        handlers = {
+          ["textDocument/inlayHint"] = function (err, result, ...)
+            for _, res in ipairs(result) do
+              res.label = res.label .. ": "
+            end
+            vim.lsp.handlers["textDocument/inlayHint"](err, result, ...)
+          end,
+        }
+      }
+      -- servers.intelephense = {};
     end
 
     if require("nixCatsUtils").isNixCats then
@@ -124,8 +124,8 @@ return {
         require("lspconfig")[server_name].setup({
           capabilities = capabilities,
           settings = (servers[server_name] or {}).settings,
-          -- init_options =(servers[server_name] or {}).init_options,
-          -- handlers =(servers[server_name] or {}).handlers,
+          init_options =(servers[server_name] or {}).init_options,
+          handlers =(servers[server_name] or {}).handlers,
           filetypes = (servers[server_name] or {}).filetypes,
           cmd = (servers[server_name] or {}).cmd,
           root_pattern = (servers[server_name] or {}).root_pattern,
