@@ -11,7 +11,7 @@
     };
 
     blade-treesitter = {
-      url ="github:EmranMR/tree-sitter-blade";
+      url = "github:EmranMR/tree-sitter-blade";
       flake = false;
     };
 
@@ -36,24 +36,15 @@
       url = "github:adalessa/phpactor/feature/laravel-extension";
       flake = false;
     };
-
   };
-
   # see :help nixCats.flake.outputs
-  outputs =
-    {
-      self,
-      nixpkgs,
-      nixCats,
-      ...
-    }@inputs:
-    let
+  outputs = { self, nixpkgs, nixCats, ... }@inputs: let
       inherit (nixCats) utils;
       luaPath = "${./.}";
       forEachSystem = utils.eachSystem nixpkgs.lib.platforms.all;
 
       extra_pkg_config = {
-         allowUnfree = true;
+        allowUnfree = true;
       };
       dependencyOverlays = # (import ./overlays inputs) ++
         [
@@ -72,16 +63,7 @@
       # see :help nixCats.flake.outputs.categories
       # and
       # :help nixCats.flake.outputs.categoryDefinitions.scheme
-      categoryDefinitions =
-        {
-          pkgs,
-          settings,
-          categories,
-          extra,
-          name,
-          mkNvimPlugin,
-          ...
-        }@packageDef:
+      categoryDefinitions = { pkgs, settings, categories, extra, name, mkNvimPlugin, ... }@packageDef:
         {
           lspsAndRuntimeDeps = {
             laravel = with pkgs; [
@@ -92,7 +74,7 @@
                 version = "master";
                 src = inputs.phpactor-laravel;
                 vendorHash = "sha256-9re+qnjcu9kqbwlxFnTtkL+wZHs+OxEax6Jl5T3c5s0=";
-                buildInputs = [ pkgs.php83];
+                buildInputs = [ pkgs.php83 ];
               }))
               php83
               php83Packages.composer
@@ -108,6 +90,9 @@
               lazygit
               ripgrep
               fd
+              nixfmt-rfc-style
+              nixfmt
+
             ];
           };
 
@@ -123,7 +108,7 @@
               nvim-treesitter.withAllGrammars # para installe todo los lenguaje
               nvim-treesitter-textobjects
               # blink-cmp
-              (inputs.blink.packages.${pkgs.system}.blink-cmp.overrideAttrs {pname = "blink.cmp";})
+              (inputs.blink.packages.${pkgs.system}.blink-cmp.overrideAttrs { pname = "blink.cmp"; })
               blink-compat
               mini-icons
               friendly-snippets
@@ -156,14 +141,14 @@
               mini-icons
             ];
 
-            laravel = with pkgs.vimPlugins;[
+            laravel = with pkgs.vimPlugins; [
               pkgs.neovimPlugins.laravel-nvim
               plenary-nvim
               nui-nvim
               vim-dotenv
               promise-async
 
-              (nvim-treesitter.grammarToPlugin(
+              (nvim-treesitter.grammarToPlugin (
                 pkgs.tree-sitter.buildGrammar {
                   language = "blade";
                   version = "0.11.0";
