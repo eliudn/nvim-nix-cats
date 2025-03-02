@@ -44,6 +44,10 @@
       url = "github:xero/evangelion.nvim";
       flake = false;
     };
+    "plugins-breadcrumbs.nvim" = {
+      url = "github:LunarVim/breadcrumbs.nvim";
+      flake = false;
+    };
   };
   # see :help nixCats.flake.outputs
   outputs =
@@ -132,8 +136,6 @@
             ];
           };
 
-
-
           # This is for plugins that will load at startup without using packadd:
           startupPlugins = {
             # gitPlugins = with pkgs.neovimPlugins; [ ];
@@ -174,6 +176,10 @@
                 src = pkgs.lib.cleanSource ./lua/themes/eva-darken.lua;
                 unpackPhase = ":";
               })
+              pkgs.neovimPlugins.breadcrumbs-nvim
+              nvim-navic
+              winbar-nvim
+              dropbar-nvim
             ];
 
             file-manager = with pkgs.vimPlugins; [
@@ -207,7 +213,6 @@
               obsidian-nvim
               plenary-nvim
             ];
-
 
           };
 

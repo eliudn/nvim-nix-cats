@@ -138,6 +138,22 @@
         "type": "github"
       }
     },
+    "plugins-breadcrumbs.nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1705019976,
+        "narHash": "sha256-DXR5Qvlxh9MiCngH9OlzsUp6LCg8P/RNwurU9vky89w=",
+        "owner": "LunarVim",
+        "repo": "breadcrumbs.nvim",
+        "rev": "9f764278784ce2f10dbe2f555ba14be2451d36a0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LunarVim",
+        "repo": "breadcrumbs.nvim",
+        "type": "github"
+      }
+    },
     "plugins-evangelion.nvim": {
       "flake": false,
       "locked": {
@@ -225,6 +241,7 @@
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
         "phpactor-laravel": "phpactor-laravel",
+        "plugins-breadcrumbs.nvim": "plugins-breadcrumbs.nvim",
         "plugins-evangelion.nvim": "plugins-evangelion.nvim",
         "plugins-laravel.nvim": "plugins-laravel.nvim",
         "plugins-oil-git-status.nvim": "plugins-oil-git-status.nvim",
