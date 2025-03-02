@@ -9,6 +9,7 @@ return {
   opts = {
     options = {
       -- this is all you need
+      -- this is all you need
       theme = "evangelion",
       -- theme = "eva-darken",
 
