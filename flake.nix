@@ -116,9 +116,23 @@
               fd
               nixfmt-rfc-style
               nixfmt
+              vscode-langservers-extracted
+              emmet-ls
+            ];
 
+            javascript = with pkgs; [
+              typescript-language-server
+            ];
+
+            vue = with pkgs; [
+              nodejs_23
+              vscode-extensions.vue.volar
+              typescript-language-server
+              vue-language-server
             ];
           };
+
+
 
           # This is for plugins that will load at startup without using packadd:
           startupPlugins = {
@@ -193,6 +207,8 @@
               obsidian-nvim
               plenary-nvim
             ];
+
+
           };
 
           # not loaded automatically at startup.
@@ -277,6 +293,8 @@
               fuzzyFinder = true;
               laravel = true;
               obsidian = true;
+              javascript = true;
+              vue = true;
               test = true;
               example = {
                 youCan = "add more than just booleans";

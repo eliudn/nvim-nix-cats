@@ -2,10 +2,10 @@ return {
   -- LSP Configuration & Plugins
   "neovim/nvim-lspconfig",
   dependencies = {
-    { "williamboman/mason.nvim", enabled = require("nixCatsUtils").lazyAdd(true, false), config = true },
-    { "williamboman/mason-lspconfig.nvim", enabled = require("nixCatsUtils").lazyAdd(true, false), },
+    { "williamboman/mason.nvim",                   enabled = require("nixCatsUtils").lazyAdd(true, false), config = true },
+    { "williamboman/mason-lspconfig.nvim",         enabled = require("nixCatsUtils").lazyAdd(true, false), },
     { "WhoIsSethDaniel/mason-tool-installer.nvim", enabled = require("nixCatsUtils").lazyAdd(true, false), },
-    { "j-hui/fidget.nvim",       opts = {} },
+    { "j-hui/fidget.nvim",                         opts = {} },
 
     {
       "folke/lazydev.nvim",
@@ -97,18 +97,28 @@ return {
         },
       },
     }
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    servers.html = {
+      capabilities = capabilities,
+    }
+    servers.cssls = {
+      capabilities = capabilities,
+      extraOptions = capabilities,
+    }
+    servers.emmet_ls = {}
 
     if require('nixCatsUtils').enableForCategory("laravel") then
       servers.phpactor = {
-        filetypes = {"php", "blade"},
+        filetypes = { "php", "blade" },
         init_options = {
-          ["language_server_worse_reflection.inlay_hints.enable"]=true,
-          ["language_server_worse_reflection.inlay_hints.types"]=false,
-          ["language_server_worse_reflection.inlay_hints.params"]=true,
-          ["code_transform.import_globals"]= true,
+          ["language_server_worse_reflection.inlay_hints.enable"] = true,
+          ["language_server_worse_reflection.inlay_hints.types"] = false,
+          ["language_server_worse_reflection.inlay_hints.params"] = true,
+          ["code_transform.import_globals"] = true,
         },
         handlers = {
-          ["textDocument/inlayHint"] = function (err, result, ...)
+          ["textDocument/inlayHint"] = function(err, result, ...)
             for _, res in ipairs(result) do
               res.label = res.label .. ": "
             end
@@ -119,13 +129,21 @@ return {
       -- servers.intelephense = {};
     end
 
+    if require("nixCatsUtils").enableForCategory("javascript") then
+      servers.ts_ls = {}
+    end
+
+    if require("nixCatsUtils").enableForCategory("vue") then
+      servers.volar = {}
+    end
+
     if require("nixCatsUtils").isNixCats then
       for server_name, _ in pairs(servers) do
         require("lspconfig")[server_name].setup({
           capabilities = capabilities,
           settings = (servers[server_name] or {}).settings,
-          init_options =(servers[server_name] or {}).init_options,
-          handlers =(servers[server_name] or {}).handlers,
+          init_options = (servers[server_name] or {}).init_options,
+          handlers = (servers[server_name] or {}).handlers,
           filetypes = (servers[server_name] or {}).filetypes,
           cmd = (servers[server_name] or {}).cmd,
           root_pattern = (servers[server_name] or {}).root_pattern,
