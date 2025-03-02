@@ -154,6 +154,12 @@
               colorizer
               gitsigns-nvim
               pkgs.neovimPlugins.evangelion-nvim
+              (pkgs.vimUtils.buildVimPlugin {
+                pname = "eva-darken";
+                version = "1.0";
+                src = pkgs.lib.cleanSource ./lua/themes/eva-darken.lua;
+                unpackPhase = ":";
+              })
             ];
 
             file-manager = with pkgs.vimPlugins; [

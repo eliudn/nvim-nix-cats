@@ -10,6 +10,7 @@ return {
     options = {
       -- this is all you need
       theme = "evangelion",
+      -- theme = "eva-darken",
 
       -- everything below
       -- is extra style

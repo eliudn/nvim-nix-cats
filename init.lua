@@ -7,6 +7,8 @@ require('core.diagnostic')
 require('core.mappings')
 require('core.autocommands')
 
+-- Theme eva 01
+require('themes.eva-darken').setup()
 
 -- NOTE: nixCats: You might want to move the lazy-lock.json file
 local function getlockfilepath()

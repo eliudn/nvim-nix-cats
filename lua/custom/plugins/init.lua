@@ -12,7 +12,7 @@ return {
     },
   },
     init = function()
-      vim.cmd.colorscheme("evangelion")
+      -- vim.cmd.colorscheme("evangelion")
     end,
   },
   -- {
@@ -23,6 +23,17 @@ return {
   --   config = function(_, opts)
   --     require('vague').setup(opts)
   --     vim.cmd.colorscheme('vague')
+  --   end,
+  -- },
+
+  -- {
+  --
+  --   dir = "~/.config/nix_config/cat-nix-vim/lua/themes/eva-darken.lua",
+  --   lazy = false,                        -- Asegurar que el tema se cargue siempre
+  --   priority = 1000,                     -- Cargar antes que otros temas
+  --   config = function()
+  --     vim.cmd("colorscheme eva-darken")
+  --     -- require("themes.eva-darken").setup() -- Cargar el archivo lua/themes/eva-darken.lua
   --   end,
   -- },
   {
