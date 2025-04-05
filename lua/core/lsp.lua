@@ -101,12 +101,16 @@ return {
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     servers.html = {
       capabilities = capabilities,
+      filetypes = { "html", "blade", "templ" }
     }
+    servers.tailwindcss = {}
     servers.cssls = {
       capabilities = capabilities,
       extraOptions = capabilities,
     }
-    servers.emmet_ls = {}
+    servers.emmet_ls = {
+      filetypes = { "html", "blade", "templ" }
+    }
 
     if require('nixCatsUtils').enableForCategory("laravel") then
       servers.phpactor = {
@@ -136,6 +140,11 @@ return {
     if require("nixCatsUtils").enableForCategory("vue") then
       servers.volar = {}
     end
+
+    -- servers.pylsp = {}
+    -- servers.jedi_language_server = {}
+    servers.ruff = {}
+    servers.jsonls = {}
 
     if require("nixCatsUtils").isNixCats then
       for server_name, _ in pairs(servers) do

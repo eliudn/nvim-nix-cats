@@ -122,6 +122,14 @@
               nixfmt
               vscode-langservers-extracted
               emmet-ls
+              # tailwindcss_4
+              tailwindcss-language-server
+              python313Packages.python-lsp-server
+              python313Packages.jedi-language-server
+              pylint
+              mypy
+              ruff
+              vscode-langservers-extracted
             ];
 
             javascript = with pkgs; [
