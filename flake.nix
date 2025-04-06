@@ -120,20 +120,22 @@
               fd
               nixfmt-rfc-style
               nixfmt
-              vscode-langservers-extracted
-              emmet-ls
               # tailwindcss_4
-              tailwindcss-language-server
+              vscode-langservers-extracted
+            ];
+
+            python = with pkgs; [
+              python313
               python313Packages.python-lsp-server
-              python313Packages.jedi-language-server
-              pylint
               mypy
               ruff
-              vscode-langservers-extracted
             ];
 
             javascript = with pkgs; [
               typescript-language-server
+              tailwindcss-language-server
+              emmet-ls
+              emnmet-language_server
             ];
 
             vue = with pkgs; [
@@ -307,6 +309,7 @@
               laravel = true;
               obsidian = true;
               javascript = true;
+              python = true;
               vue = true;
               test = true;
               example = {
