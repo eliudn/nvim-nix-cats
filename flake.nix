@@ -134,8 +134,8 @@
             javascript = with pkgs; [
               typescript-language-server
               tailwindcss-language-server
-              emmet-ls
-              emnmet-language_server
+              # emmet-ls
+              emmet-language-server
             ];
 
             vue = with pkgs; [
