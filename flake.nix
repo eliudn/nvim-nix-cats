@@ -222,6 +222,7 @@
             obsidian = with pkgs.vimPlugins; [
               obsidian-nvim
               plenary-nvim
+              render-markdown
             ];
 
           };
