@@ -8,11 +8,25 @@ local vaults = {
         path = "~/leunamz_obsidian/work",
     },
 }
-local events = {}
-for _, vault in ipairs(vaults) do
-    table.insert(events, string.format("BufReadPre %s/*.md", vim.fn.expand(vault.path)))
-    table.insert(events, string.format("BufNewFile %s/*.md", vim.fn.expand(vault.path)))
-end
+
+local events = vim
+  .iter(vaults)
+  :map(function(vault)
+    return vim.fn.expand(vault.path)
+  end)
+  :map(function(vault)
+    return {
+      string.format("BufReadPre %s/*.md", vault),
+      string.format("BufNewFile %s/*.md", vault),
+    }
+  end)
+  :flatten()
+  :totable()
+-- local events = {}
+-- for _, vault in ipairs(vaults) do
+--     table.insert(events, string.format("BufReadPre %s/*.md", vim.fn.expand(vault.path)))
+--     table.insert(events, string.format("BufNewFile %s/*.md", vim.fn.expand(vault.path)))
+-- end
 return {
     "epwalsh/obsidian.nvim",
     enabled = require('nixCatsUtils').enableForCategory("obsidian"),
@@ -20,7 +34,7 @@ return {
     lazy = true,
     -- ft = "markdown",
     -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-    event = { unpack(events) },
+    event = events,
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
@@ -62,6 +76,7 @@ return {
             Today = "ObsidianToday",
             Yesterday = "ObsidianYesterday",
             Tomorrow = "ObsidianTomorrow",
+            new = "ObsidianNew",
         }
 
         vim.api.nvim_create_user_command("ObsidianMenu", function()

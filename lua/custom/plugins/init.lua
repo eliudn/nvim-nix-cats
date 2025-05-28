@@ -2,6 +2,19 @@ return {
   "tpope/vim-surround",
   "direnv/direnv.vim",
   {
+    'stevearc/dressing.nvim',
+    opts = {},
+    config = function()
+      require('dressing').setup({
+        input = {
+          win_options = {
+            winhighlight = 'NormalFloat:DiagnosticError'
+          }
+        }
+      })
+    end
+  },
+  {
     "xero/evangelion.nvim",
     lazy = false,
     priority = 1000,

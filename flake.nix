@@ -122,6 +122,10 @@
               nixfmt
               # tailwindcss_4
               vscode-langservers-extracted
+              mermaid-cli
+              d2
+              plantuml
+              gnuplot
             ];
 
             python = with pkgs; [
@@ -190,6 +194,7 @@
               nvim-navic
               winbar-nvim
               dropbar-nvim
+              dressing-nvim
             ];
 
             file-manager = with pkgs.vimPlugins; [
@@ -224,7 +229,10 @@
               plenary-nvim
               render-markdown-nvim
               diagram-nvim
+              image-nvim
+              markdown-preview-nvim
             ];
+
 
           };
 
