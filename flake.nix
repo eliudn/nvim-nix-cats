@@ -95,15 +95,15 @@
         {
           lspsAndRuntimeDeps = {
             laravel = with pkgs; [
-              # phpactor
+               phpactor
               # intelephense
-              (pkgs.php.buildComposerProject (finalAttrs: {
-                pname = "phpactor";
-                version = "master";
-                src = inputs.phpactor-laravel;
-                vendorHash = "sha256-9re+qnjcu9kqbwlxFnTtkL+wZHs+OxEax6Jl5T3c5s0=";
-                buildInputs = [ pkgs.php83 ];
-              }))
+              #(pkgs.php.buildComposerProject (finalAttrs: {
+               # pname = "phpactor";
+                #version = "master";
+                #src = inputs.phpactor-laravel;
+                #vendorHash = "sha256-9re+qnjcu9kqbwlxFnTtkL+wZHs+OxEax6Jl5T3c5s0=";
+                #buildInputs = [ pkgs.php83 ];
+             # }))
               php83
               php83Packages.composer
               blade-formatter
@@ -143,7 +143,7 @@
             ];
 
             vue = with pkgs; [
-              nodejs_23
+              nodejs_24
               vscode-extensions.vue.volar
               typescript-language-server
               vue-language-server
@@ -231,6 +231,7 @@
               diagram-nvim
               image-nvim
               markdown-preview-nvim
+              typst-preview-nvim
             ];
 
 
