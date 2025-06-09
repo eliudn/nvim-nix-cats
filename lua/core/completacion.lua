@@ -55,15 +55,25 @@ return {
 
           end
 
+          if require("nixCatsUtils").enableForCategory("ia")then
+            table.insert(sources, "copilot")
+          end
+
           return sources
         end,
         providers = {
+          copilot = {
+            name = "copilot",
+            module ="blink-cmp-copilot",
+            score_offset = 100,
+            async = true,
+          },
           laravel = {
             name = "laravel",
             module = "blink.compat.source",
           },
           dadbod = {
-            name = "Dadbod", 
+            name = "Dadbod",
             module = "vim_dadbod_completion.blink",
           }
         }

@@ -197,6 +197,15 @@
               dressing-nvim
             ];
 
+            ia = with pkgs.vimPlugins; [
+              avante-nvim
+              blink-cmp-copilot
+              nui-nvim
+              plenary-nvim
+              copilot-lua
+              avante-nvim
+            ];
+
             file-manager = with pkgs.vimPlugins; [
               oil-nvim
               pkgs.neovimPlugins.oil-git-status-nvim
@@ -312,6 +321,7 @@
             # and a set of categories that you want
             # (and other information to pass to lua)
             categories = {
+              ia = true;
               general = true;
               gitPlugins = true;
               customPlugins = true;
